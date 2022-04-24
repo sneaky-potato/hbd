@@ -11,7 +11,8 @@ def api():
 @route_blueprint.route('/birthday', methods = ['GET'])
 def get_birthdays():
     birthdays = Birthday.query.all()
-    return jsonify({'data': birthdays}), 200
+    print(birthdays)
+    return jsonify({'data': [birthday.serialize for birthday in birthdays]}), 200
 
 @route_blueprint.route('/birthday', methods = ['POST'])
 def post_birthday():
