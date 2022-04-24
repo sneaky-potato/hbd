@@ -1,6 +1,5 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from src.models import db
 from src.routes.birthdays import route_blueprint
 
