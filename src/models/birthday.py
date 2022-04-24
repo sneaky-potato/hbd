@@ -1,4 +1,5 @@
 from src.models import db
+import calendar
 
 class Birthday(db.Model):
     __tablename__ = 'bdays'
@@ -7,3 +8,11 @@ class Birthday(db.Model):
     name = db.Column(db.String)
     bday_day = db.Column(db.Integer)
     bday_month = db.Column(db.Integer)
+
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'birthday': str(self.bday_day) + ' ' + str(calendar.month_name[self.bday_month])
+        }
