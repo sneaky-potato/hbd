@@ -15,5 +15,4 @@ celery.conf.beat_schedule = {
 def birthdays_today():
     today = datetime.datetime.now()
     
-    # query_list = Birthday.query.filter_by(bday_month=today.month).filter_by(bday_day=today.day)
     print("hello")
