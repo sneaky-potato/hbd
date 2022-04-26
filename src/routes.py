@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from src.models.birthday import Birthday
-from src.models import db
+from src.models.init_db import db
+from src.models.models import Birthday
 
 route_blueprint = Blueprint('route_blueprint', __name__)
 
