@@ -1,4 +1,4 @@
-from src.models import db
+from src.models.init_db import db
 import calendar
 
 class Birthday(db.Model):
