@@ -11,6 +11,7 @@ def create_app():
 
     initialize_database(app)
     register_blueprints(app)
+    initialize_mail(app)
     initialize_celery(app)
 
     return app
@@ -26,6 +27,11 @@ def initialize_database(app):
     db.init_app(app)
     with app.app_context():
         db.create_all(app=app)
+
+def initialize_mail(app):
+    from src.mail.init_mail import mail
+    
+    mail.init_app(app)
 
 def initialize_celery(app):
 
