@@ -1,34 +1,40 @@
 import os
 from flask import Flask
+from src.worker.init_celery import celery
 
 config_filename = os.path.abspath(os.path.dirname(__file__)) + "/../config.py"
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile(config_filename)
+    app.app_context().push()
 
-    register_blueprints(app)
     initialize_database(app)
+    register_blueprints(app)
     initialize_celery(app)
-    # celery.conf.update(app.config)
 
     return app
 
 def register_blueprints(app):
-    from src.routes.birthdays import route_blueprint
+    from src.routes import route_blueprint
 
     app.register_blueprint(route_blueprint)
 
 def initialize_database(app):
-    from src.models import db
+    from src.models.init_db import db
 
     db.init_app(app)
     with app.app_context():
         db.create_all(app=app)
 
 def initialize_celery(app):
-    from src.worker import celery
 
-    celery.conf.update(app.config)
+    class ContextTask(celery.Task):
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return self.run(*args, **kwargs)
+
+    celery.Task = ContextTask
+    import src.worker.task
 
 app = create_app()
