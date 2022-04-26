@@ -3,6 +3,7 @@ amqp==5.1.1
 async-timeout==4.0.2
 attrs==21.4.0
 billiard==3.6.4.0
+blinker==1.4
 celery==5.2.6
 certifi==2021.10.8
 chardet==4.0.0
@@ -14,6 +15,7 @@ dataclasses==0.6
 Deprecated==1.2.13
 deprecation==2.1.0
 Flask==2.1.1
+Flask-Mail==0.9.1
 Flask-Migrate==3.1.0
 Flask-SQLAlchemy==2.5.1
 gotrue==0.2.0
