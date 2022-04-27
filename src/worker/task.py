@@ -16,5 +16,5 @@ celery.conf.beat_schedule = {
 def birthdays_today():
     today = datetime.datetime.now()
     print(Birthday.query.all())
-    send_mail()
+    send_mail("Hello world")
 
