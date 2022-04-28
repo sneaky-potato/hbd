@@ -1,7 +1,5 @@
 import os
-from dotenv import load_dotenv
 from celery import Celery
-load_dotenv()
+from config import CELERY_CONFIG
 
-redis_uri = os.getenv('REDIS_URI')
-celery = Celery(__name__, backend=redis_uri, broker=redis_uri)
+celery = Celery(__name__, backend=CELERY_CONFIG.CELERY_RESULT_BACKEND, broker=CELERY_CONFIG.CELERY_BROKER_URL)
