@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
     - name: Make envfile
       uses: SpicyPizza/create-envfile@v1.3
       with:
@@ -27,9 +30,7 @@ jobs:
         envkey_MAIL_USERNAME: ${{ secrets.MAIL_USERNAME}}
         envkey_MAIL_PASSWD: ${{ secrets.MAIL_PASSWD}}
         envkey_REC_MAIL_USERNAME: ${{ secrets.REC_MAIL_USERNAME}}
-
-    - name: Checkout
-      uses: actions/checkout@v1
+        # directory: /home/runner/work/hbd/hbd/.env
 
     - name: Start containers
       run: docker-compose -f "docker-compose.yml" up -d --build
