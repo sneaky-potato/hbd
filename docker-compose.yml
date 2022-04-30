@@ -13,7 +13,8 @@ services:
       - .env
     links:
         - redis
-        - celery
+        - worker
+        - beat
     depends_on:
       - redis
   redis:
