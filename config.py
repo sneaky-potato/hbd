@@ -29,6 +29,7 @@ RECEIVER_MAIL = os.getenv('REC_MAIL_USERNAME')
 class MailConfig(object):
     SENDER = MAIL_USERNAME
     RECIEVER = RECEIVER_MAIL
+
 class CeleryConfig(object):
     CELERY_BROKER_URL = os.getenv('REDIS_URI')
     CELERY_RESULT_BACKEND = os.getenv('REDIS_URI')
