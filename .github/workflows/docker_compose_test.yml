@@ -8,9 +8,10 @@ on:
     branches:
     - main
 
-jobs:
-  env_setup:
-    name: Setup .env file
+jobs:   
+  docker:
+    name: Docker compose build and run
+    timeout-minutes: 5
     runs-on: ubuntu-latest
 
     steps:
@@ -27,13 +28,6 @@ jobs:
         envkey_MAIL_PASSWD: ${{ secrets.MAIL_PASSWD}}
         envkey_REC_MAIL_USERNAME: ${{ secrets.REC_MAIL_USERNAME}}
 
-  docker:
-    name: Docker compose build and run
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-    needs: env_setup
-
-    steps:
     - name: Checkout
       uses: actions/checkout@v1
 
