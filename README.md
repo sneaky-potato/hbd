@@ -8,9 +8,12 @@ A birthday reminder flask service
 
 A quick introduction of the minimal setup you need to get the development environment setup
 
+Please use Python  v3.10.4 (you may use [pyenv](https://pypi.org/project/pyenv/) to switch if you're on a different version)
+
 ```shell
 git clone https://github.com/sneaky-potato/hbd.git
 cd hbd
+python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
 ```
