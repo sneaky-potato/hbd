@@ -17,8 +17,8 @@ SQLALCHEMY_DATABASE_URI = DB_URL
 FLASK_DEBUG = True
 FLASK_ENV = 'development'
 
-MAIL_SERVER = 'smtp.gmail.com'
-MAIL_PORT = 465
+MAIL_SERVER = 'smtp.mailgun.org'
+MAIL_PORT = 587
 MAIL_USERNAME = os.getenv('MAIL_USERNAME')
 MAIL_PASSWORD = os.getenv('MAIL_PASSWD')
 MAIL_USE_TLS = False
